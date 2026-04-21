@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Matches Near You</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff3366, #ff6699);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.container {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #fff;
+    color: #333;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.sub {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.notice {
+    background: #ffe6ec;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 12px;
+    background: #ff3366;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #e62e5c;
+}
+
+.hidden { display: none; }
+
+.progress {
+    height: 6px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.bar {
+    height: 6px;
+    width: 0%;
+    background: #ff3366;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.fake-chat {
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.msg {
+    background: #ff3366;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin: 5px 0;
+    display: inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<h1>Find Singles Near You</h1>
+<div class="sub">Free signup — see who’s online now</div>
+
+<div class="notice">
+⚡ 4 people are currently looking to chat near you
+</div>
+
+<!-- STEP 1 -->
+<div id="step1">
+    <p>Are you male or female?</p>
+    <button class="btn" onclick="next()">Male</button>
+    <button class="btn" onclick="next()">Female</button>
+</div>
+
+<!-- STEP 2 -->
+<div id="step2" class="hidden">
+    <p>What are you looking for?</p>
+    <button class="btn" onclick="next()">Chat</button>
+    <button class="btn" onclick="next()">Dating</button>
+    <button class="btn" onclick="next()">Casual</button>
+</div>
+
+<!-- STEP 3 -->
+<div id="step3" class="hidden">
+    <p>People nearby are waiting...</p>
+
+    <div class="fake-chat">
+        <div class="msg">Hey 😊 are you nearby?</div><br>
+        <div class="msg">I saw your profile...</div>
+    </div>
+
+    <button class="btn" onclick="next()">Continue</button>
+</div>
+
+<!-- FINAL -->
+<div id="step4" class="hidden">
+    <p><strong>We found matches for you!</strong></p>
+    <p>Click below to unlock profiles</p>
+
+    <a id="cta" href="#" class="btn">See Matches</a>
+</div>
+
+</div>
+
+<script>
+let step = 1;
+
+// ✅ YOUR AFFILIATE LINK INSERTED
+const affiliateLink = "https://t.crdtg2.com/386006/10377/0?bo=2753,2754,2755,2756&po=6456&aff_sub5=SF_006OG000004lmDN";
+
+document.getElementById("cta").href = affiliateLink;
+
+function next() {
+    document.getElementById("step" + step).classList.add("hidden");
+    step++;
+    document.getElementById("step" + step).classList.remove("hidden");
+
+    let progress = (step - 1) * 33;
+    document.getElementById("bar").style.width = progress + "%";
+}
+</script>
+
+</body>
+</html>
