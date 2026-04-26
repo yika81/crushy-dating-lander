@@ -1,13 +1,8 @@
 <!DOCTYPE html><html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Messages Nearby</title><style>
-body {
-  margin:0;
-  background:#0e0e0e;
-  font-family:Arial, sans-serif;
-  color:white;
-}
+<title>Nearby Chat</title><style>
+body {margin:0;background:#0e0e0e;font-family:Arial;color:white;}
 
 .header {
   background:#000;
@@ -20,7 +15,6 @@ body {
   text-align:center;
   font-size:14px;
   color:#aaa;
-  margin-top:5px;
 }
 
 .chat {
@@ -30,16 +24,30 @@ body {
 }
 
 .msg {
-  background:#1c1c1c;
-  padding:12px;
+  display:flex;
+  align-items:flex-start;
   margin:10px 0;
-  border-radius:12px;
   display:none;
+}
+
+.avatar {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  margin-right:10px;
+}
+
+.bubble {
+  background:#1c1c1c;
+  padding:10px;
+  border-radius:12px;
+  max-width:70%;
 }
 
 .typing {
   font-size:13px;
   color:#aaa;
+  margin-left:50px;
   display:none;
 }
 
@@ -55,23 +63,35 @@ body {
   margin-top:15px;
 }
 </style></head><body><div class="header">💬 Nearby Chat</div>
-<div class="sub">📍 3 people near you are online now</div><div class="chat">
-  <div id="m1" class="msg">Hey… are you online? 😘</div>
-  <div id="typing1" class="typing">typing...</div>  <div id="m2" class="msg">I found your profile close to me 👀</div>
-  <div id="typing2" class="typing">typing...</div>  <div id="m3" class="msg">I can’t send pics here…</div>
-  <div id="typing3" class="typing">typing...</div>  <div id="m4" class="msg">Wanna continue privately? 🔥</div><button id="btn" class="btn" onclick="go()">VIEW MESSAGES NOW</button>
+<div class="sub">📍 Someone near you is online</div><div class="chat">  <div id="m1" class="msg">
+    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
+    <div class="bubble">Hey… are you online? 😘</div>
+  </div>  <div id="typing1" class="typing">typing...</div>  <div id="m2" class="msg">
+    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
+    <div class="bubble">I saw your profile nearby 👀</div>
+  </div>  <div id="typing2" class="typing">typing...</div>  <div id="m3" class="msg">
+    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
+    <div class="bubble">I can’t send pics here…</div>
+  </div>  <div id="typing3" class="typing">typing...</div>  <div id="m4" class="msg">
+    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
+    <div class="bubble">Join me privately 🔥</div>
+  </div><button id="btn" class="btn" onclick="go()">VIEW MESSAGES</button>
 
 </div><script>
-function show(id){ document.getElementById(id).style.display="block"; }
 
-setTimeout(()=>{ show("m1"); show("typing1"); },1000);
-setTimeout(()=>{ show("m2"); document.getElementById("typing1").style.display="none"; show("typing2"); },2500);
-setTimeout(()=>{ show("m3"); document.getElementById("typing2").style.display="none"; show("typing3"); },4500);
+var mainLink = "https://t.crdtg2.com/386006/10377/0?bo=2753,2754,2755,2756&po=6456&aff_sub5=TS_POP";
+
+function show(id){ document.getElementById(id).style.display="flex"; }
+
+setTimeout(()=>{ show("m1"); document.getElementById("typing1").style.display="block"; },1000);
+setTimeout(()=>{ show("m2"); document.getElementById("typing1").style.display="none"; document.getElementById("typing2").style.display="block"; },2500);
+setTimeout(()=>{ show("m3"); document.getElementById("typing2").style.display="none"; document.getElementById("typing3").style.display="block"; },4500);
 setTimeout(()=>{ show("m4"); document.getElementById("typing3").style.display="none"; },6500);
-setTimeout(()=>{ show("btn"); },8000);
+setTimeout(()=>{ document.getElementById("btn").style.display="block"; },8000);
 
 function go(){
-  window.location.href="https://t.crdtg2.com/386006/10377/0?bo=2753,2754,2755,2756&po=6456&aff_sub5=SF_006OG000004lmDN";
+  window.location.href = mainLink;
 }
+
 </script></body>
 </html>
