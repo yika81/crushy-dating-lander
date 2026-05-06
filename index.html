@@ -13,21 +13,46 @@ body {
 }
 
 .container {
-  padding:20px;
   max-width:400px;
   margin:auto;
+  padding:15px;
+}
+
+.header {
+  text-align:center;
+  font-size:22px;
+  margin-top:20px;
+  color:#ff3b3b;
+}
+
+.sub {
+  text-align:center;
+  font-size:14px;
+  color:#ccc;
 }
 
 .chat {
-  margin-top:30px;
+  margin-top:20px;
+}
+
+.msg-row {
+  display:flex;
+  align-items:flex-start;
+  margin-bottom:15px;
+}
+
+.avatar {
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  margin-right:10px;
 }
 
 .msg {
-  background:#222;
-  padding:12px;
+  background:#1c1c1c;
+  padding:10px;
   border-radius:10px;
-  margin-bottom:10px;
-  display:inline-block;
+  max-width:75%;
 }
 
 .typing {
@@ -37,13 +62,13 @@ body {
 
 button {
   width:100%;
-  padding:15px;
+  padding:16px;
   font-size:18px;
-  background:#e50914;
+  background:#ff2d55;
   color:white;
   border:none;
-  border-radius:8px;
-  margin-top:20px;
+  border-radius:10px;
+  margin-top:25px;
 }
 
 .popup {
@@ -55,12 +80,6 @@ button {
   border-radius:8px;
   font-size:12px;
   opacity:0.9;
-  animation:fadein 1s;
-}
-
-@keyframes fadein {
-  from {opacity:0;}
-  to {opacity:0.9;}
 }
 </style>
 </head>
@@ -69,49 +88,64 @@ button {
 
 <div class="container">
 
-<h2>💬 New Message Received</h2>
+<div class="header">⚠️ 3 Unread Messages</div>
+<div class="sub">Women near Johannesburg are waiting for your reply</div>
 
-<div class="chat" id="chat">
-  <div class="msg">Jessica (2km away):</div>
-  <div class="msg">"Hey… are you ignoring me? 😘"</div>
-  <div class="msg typing">Typing...</div>
+<div class="chat">
+
+<div class="msg-row">
+<img class="avatar" src="https://i.imgur.com/1X6vQ.jpg">
+<div class="msg">Jessica: "Hey… are you ignoring me? 😘"</div>
 </div>
 
-<button onclick="startFlow()">Read Message</button>
+<div class="msg-row">
+<img class="avatar" src="https://i.imgur.com/2X7vQ.jpg">
+<div class="msg">Amanda: "I saw your profile... you look interesting 😏"</div>
+</div>
+
+<div class="msg-row">
+<img class="avatar" src="https://i.imgur.com/3X8vQ.jpg">
+<div class="msg typing">Typing...</div>
+</div>
+
+</div>
+
+<button onclick="step1()">See Who Messaged You →</button>
 
 </div>
 
 <script>
 
-function startFlow(){
-  document.body.innerHTML = `
-  <div class="container">
-    <h2>Are you over 18?</h2>
-    <button onclick="step2()">YES</button>
-  </div>`;
+function step1(){
+document.body.innerHTML = `
+<div class="container">
+<h2>Are you over 18?</h2>
+<button onclick="step2()">Yes, continue</button>
+</div>`;
 }
 
 function step2(){
-  document.body.innerHTML = `
-  <div class="container">
-    <h2>Who are you looking for?</h2>
-    <button onclick="go()">Women</button>
-  </div>`;
+document.body.innerHTML = `
+<div class="container">
+<h2>Who are you looking for?</h2>
+<button onclick="go()">Women near you</button>
+</div>`;
 }
 
 function go(){
-  window.location.href="https://t.mbjms.com/386006/3785/0?target=pops&po=6456&aff_sub5=SF_006OG000004lmDN";
+window.location.href="https://t.mbjms.com/386006/3785/0?target=pops&po=6456&aff_sub5=SF_006OG000004lmDN";
 }
 
+/* notifications */
 setInterval(function(){
-  var names = ["Amanda","Lisa","Chloe","Samantha"];
-  var name = names[Math.floor(Math.random()*names.length)];
-  var popup = document.createElement("div");
-  popup.className="popup";
-  popup.innerHTML = name + " is online now (1km away)";
-  document.body.appendChild(popup);
+var names = ["Amanda","Lisa","Chloe","Samantha"];
+var name = names[Math.floor(Math.random()*names.length)];
+var popup = document.createElement("div");
+popup.className="popup";
+popup.innerHTML = name + " just came online";
+document.body.appendChild(popup);
 
-  setTimeout(()=>{popup.remove();},3000);
+setTimeout(()=>{popup.remove();},3000);
 },4000);
 
 </script>
