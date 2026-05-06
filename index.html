@@ -21,7 +21,7 @@ body {
 .header {
   text-align:center;
   font-size:22px;
-  margin-top:20px;
+  margin-top:15px;
   color:#ff3b3b;
 }
 
@@ -55,6 +55,10 @@ body {
   max-width:75%;
 }
 
+.blur {
+  filter: blur(4px);
+}
+
 .typing {
   opacity:0.6;
   font-style:italic;
@@ -69,6 +73,13 @@ button {
   border:none;
   border-radius:10px;
   margin-top:25px;
+}
+
+.urgency {
+  text-align:center;
+  color:#ff4d4d;
+  font-size:13px;
+  margin-top:5px;
 }
 
 .popup {
@@ -90,27 +101,30 @@ button {
 
 <div class="header">⚠️ 3 Unread Messages</div>
 <div class="sub">Women near Johannesburg are waiting for your reply</div>
+<div class="urgency">⏳ These messages will expire soon</div>
 
 <div class="chat">
 
 <div class="msg-row">
-<img class="avatar" src="https://i.imgur.com/1X6vQ.jpg">
+<img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg">
 <div class="msg">Jessica: "Hey… are you ignoring me? 😘"</div>
 </div>
 
 <div class="msg-row">
-<img class="avatar" src="https://i.imgur.com/2X7vQ.jpg">
+<img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg">
 <div class="msg">Amanda: "I saw your profile... you look interesting 😏"</div>
 </div>
 
 <div class="msg-row">
-<img class="avatar" src="https://i.imgur.com/3X8vQ.jpg">
+<img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg">
+<div class="msg blur">"Click to unlock my private pics..."</div>
+</div>
+
 <div class="msg typing">Typing...</div>
-</div>
 
 </div>
 
-<button onclick="step1()">See Who Messaged You →</button>
+<button onclick="step1()">Unlock Messages Now 🔓</button>
 
 </div>
 
@@ -136,7 +150,15 @@ function go(){
 window.location.href="https://t.mbjms.com/386006/3785/0?target=pops&po=6456&aff_sub5=SF_006OG000004lmDN";
 }
 
-/* notifications */
+/* countdown in title */
+let time = 120;
+setInterval(() => {
+  time--;
+  if(time <= 0) time = 120;
+  document.title = "⏳ " + time + "s - New Messages";
+}, 1000);
+
+/* fake notifications */
 setInterval(function(){
 var names = ["Amanda","Lisa","Chloe","Samantha"];
 var name = names[Math.floor(Math.random()*names.length)];
