@@ -1,97 +1,120 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nearby Chat</title><style>
-body {margin:0;background:#0e0e0e;font-family:Arial;color:white;}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Messages</title>
 
-.header {
-  background:#000;
-  padding:12px;
-  text-align:center;
-  font-weight:bold;
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0f0f0f;
+  color:white;
 }
 
-.sub {
-  text-align:center;
-  font-size:14px;
-  color:#aaa;
+.container {
+  padding:20px;
+  max-width:400px;
+  margin:auto;
 }
 
 .chat {
-  max-width:400px;
-  margin:0 auto;
-  padding:15px;
+  margin-top:30px;
 }
 
 .msg {
-  display:flex;
-  align-items:flex-start;
-  margin:10px 0;
-  display:none;
-}
-
-.avatar {
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  margin-right:10px;
-}
-
-.bubble {
-  background:#1c1c1c;
-  padding:10px;
-  border-radius:12px;
-  max-width:70%;
+  background:#222;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:10px;
+  display:inline-block;
 }
 
 .typing {
-  font-size:13px;
-  color:#aaa;
-  margin-left:50px;
-  display:none;
+  opacity:0.6;
+  font-style:italic;
 }
 
-.btn {
-  display:none;
+button {
   width:100%;
   padding:15px;
-  background:#ff2e63;
-  border:none;
-  color:white;
   font-size:18px;
+  background:#e50914;
+  color:white;
+  border:none;
   border-radius:8px;
-  margin-top:15px;
+  margin-top:20px;
 }
-</style></head><body><div class="header">💬 Nearby Chat</div>
-<div class="sub">📍 Someone near you is online</div><div class="chat">  <div id="m1" class="msg">
-    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
-    <div class="bubble">Hey… are you online? 😘</div>
-  </div>  <div id="typing1" class="typing">typing...</div>  <div id="m2" class="msg">
-    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
-    <div class="bubble">I saw your profile nearby 👀</div>
-  </div>  <div id="typing2" class="typing">typing...</div>  <div id="m3" class="msg">
-    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
-    <div class="bubble">I can’t send pics here…</div>
-  </div>  <div id="typing3" class="typing">typing...</div>  <div id="m4" class="msg">
-    <img src="https://i.imgur.com/1X6aQ.jpg" class="avatar">
-    <div class="bubble">Join me privately 🔥</div>
-  </div><button id="btn" class="btn" onclick="go()">VIEW MESSAGES</button>
 
-</div><script>
+.popup {
+  position:fixed;
+  bottom:10px;
+  left:10px;
+  background:#222;
+  padding:10px;
+  border-radius:8px;
+  font-size:12px;
+  opacity:0.9;
+  animation:fadein 1s;
+}
 
-var mainLink = "https://t.crdtg2.com/386006/10377/0?bo=2753,2754,2755,2756&po=6456&aff_sub5=TS_POP";
+@keyframes fadein {
+  from {opacity:0;}
+  to {opacity:0.9;}
+}
+</style>
+</head>
 
-function show(id){ document.getElementById(id).style.display="flex"; }
+<body>
 
-setTimeout(()=>{ show("m1"); document.getElementById("typing1").style.display="block"; },1000);
-setTimeout(()=>{ show("m2"); document.getElementById("typing1").style.display="none"; document.getElementById("typing2").style.display="block"; },2500);
-setTimeout(()=>{ show("m3"); document.getElementById("typing2").style.display="none"; document.getElementById("typing3").style.display="block"; },4500);
-setTimeout(()=>{ show("m4"); document.getElementById("typing3").style.display="none"; },6500);
-setTimeout(()=>{ document.getElementById("btn").style.display="block"; },8000);
+<div class="container">
+
+<h2>💬 New Message Received</h2>
+
+<div class="chat" id="chat">
+  <div class="msg">Jessica (2km away):</div>
+  <div class="msg">"Hey… are you ignoring me? 😘"</div>
+  <div class="msg typing">Typing...</div>
+</div>
+
+<button onclick="startFlow()">Read Message</button>
+
+</div>
+
+<script>
+
+function startFlow(){
+  document.body.innerHTML = `
+  <div class="container">
+    <h2>Are you over 18?</h2>
+    <button onclick="step2()">YES</button>
+  </div>`;
+}
+
+function step2(){
+  document.body.innerHTML = `
+  <div class="container">
+    <h2>Who are you looking for?</h2>
+    <button onclick="go()">Women</button>
+  </div>`;
+}
 
 function go(){
-  window.location.href = mainLink;
+  window.location.href="https://t.mbjms.com/386006/3785/0?target=pops&po=6456&aff_sub5=SF_006OG000004lmDN";
 }
 
-</script></body>
+setInterval(function(){
+  var names = ["Amanda","Lisa","Chloe","Samantha"];
+  var name = names[Math.floor(Math.random()*names.length)];
+  var popup = document.createElement("div");
+  popup.className="popup";
+  popup.innerHTML = name + " is online now (1km away)";
+  document.body.appendChild(popup);
+
+  setTimeout(()=>{popup.remove();},3000);
+},4000);
+
+</script>
+
+</body>
 </html>
