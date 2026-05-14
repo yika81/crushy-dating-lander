@@ -1,96 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New Messages</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Messages Nearby</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#0f0f0f;
-  color:white;
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
 }
 
-.container {
-  max-width:400px;
-  margin:auto;
-  padding:15px;
+.container{
+    max-width:450px;
+    margin:auto;
+    padding:20px;
 }
 
-.header {
-  text-align:center;
-  font-size:22px;
-  margin-top:15px;
-  color:#ff3b3b;
+.header{
+    text-align:center;
+    margin-top:20px;
 }
 
-.sub {
-  text-align:center;
-  font-size:14px;
-  color:#ccc;
+.header h1{
+    font-size:28px;
+    margin-bottom:10px;
 }
 
-.chat {
-  margin-top:20px;
+.sub{
+    color:#bbbbbb;
+    font-size:14px;
 }
 
-.msg-row {
-  display:flex;
-  align-items:flex-start;
-  margin-bottom:15px;
+.chat-box{
+    margin-top:30px;
 }
 
-.avatar {
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  margin-right:10px;
+.message{
+    background:#1f1f1f;
+    padding:14px;
+    border-radius:15px;
+    margin-bottom:12px;
+    animation:fadeIn 0.5s ease;
 }
 
-.msg {
-  background:#1c1c1c;
-  padding:10px;
-  border-radius:10px;
-  max-width:75%;
+.name{
+    color:#ff3b6b;
+    font-weight:bold;
 }
 
-.blur {
-  filter: blur(4px);
+.typing{
+    opacity:0.6;
+    font-style:italic;
 }
 
-.typing {
-  opacity:0.6;
-  font-style:italic;
+.cta{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:#ff2d55;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    margin-top:25px;
+    cursor:pointer;
+    box-shadow:0 0 20px rgba(255,45,85,0.4);
 }
 
-button {
-  width:100%;
-  padding:16px;
-  font-size:18px;
-  background:#ff2d55;
-  color:white;
-  border:none;
-  border-radius:10px;
-  margin-top:25px;
+.hero{
+    width:100%;
+    border-radius:18px;
+    margin-top:20px;
 }
 
-.urgency {
-  text-align:center;
-  color:#ff4d4d;
-  font-size:13px;
-  margin-top:5px;
+.popup{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:#1f1f1f;
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    font-size:13px;
+    opacity:0.95;
+    z-index:999;
+    animation:fadeIn 0.5s ease;
 }
 
-.popup {
-  position:fixed;
-  bottom:10px;
-  left:10px;
-  background:#222;
-  padding:10px;
-  border-radius:8px;
-  font-size:12px;
-  opacity:0.9;
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 </style>
 </head>
@@ -99,76 +109,98 @@ button {
 
 <div class="container">
 
-<div class="header">⚠️ 3 Unread Messages</div>
-<div class="sub">Women near Johannesburg are waiting for your reply</div>
-<div class="urgency">⏳ These messages will expire soon</div>
-
-<div class="chat">
-
-<div class="msg-row">
-<img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg">
-<div class="msg">Jessica: "Hey… are you ignoring me? 😘"</div>
+<div class="header">
+<h1>🔥 3 Unread Messages</h1>
+<div class="sub">Women near you are waiting for your reply 😘</div>
 </div>
 
-<div class="msg-row">
-<img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg">
-<div class="msg">Amanda: "I saw your profile... you look interesting 😏"</div>
+<img class="hero" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=900&auto=format&fit=crop" alt="girl">
+
+<div class="chat-box">
+
+<div class="message">
+<span class="name">Jessica:</span>
+"Hey... are you ignoring me? 😘"
 </div>
 
-<div class="msg-row">
-<img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg">
-<div class="msg blur">"Click to unlock my private pics..."</div>
+<div class="message">
+<span class="name">Amanda:</span>
+"I saw your profile... you look interesting 😉"
 </div>
 
-<div class="msg typing">Typing...</div>
+<div class="message typing">
+Typing...
+</div>
 
 </div>
 
-<button onclick="step1()">Unlock Messages Now 🔓</button>
+<button class="cta" onclick="startFlow()">
+Unlock Messages Now 🔥
+</button>
 
 </div>
 
 <script>
 
-function step1(){
+function startFlow(){
 document.body.innerHTML = `
 <div class="container">
-<h2>Are you over 18?</h2>
-<button onclick="step2()">Yes, continue</button>
-</div>`;
+
+<div class="header">
+<h1>Are You Over 18?</h1>
+<div class="sub">Adult dating content ahead</div>
+</div>
+
+<button class="cta" onclick="step2()">
+YES, CONTINUE
+</button>
+
+</div>
+`;
 }
 
 function step2(){
 document.body.innerHTML = `
 <div class="container">
-<h2>Who are you looking for?</h2>
-<button onclick="go()">Women near you</button>
-</div>`;
+
+<div class="header">
+<h1>Who Would You Like To Meet?</h1>
+<div class="sub">Choose your preference below</div>
+</div>
+
+<button class="cta" onclick="goOffer()">
+Women Near Me 💋
+</button>
+
+</div>
+`;
 }
 
-function go(){
-window.location.href="https://t.mbjms.com/386006/3785/0?target=pops&po=6456&aff_sub5=SF_006OG000004lmDN";
+function goOffer(){
+
+window.location.href="{offer}";
+
 }
 
-/* countdown in title */
-let time = 120;
-setInterval(() => {
-  time--;
-  if(time <= 0) time = 120;
-  document.title = "⏳ " + time + "s - New Messages";
-}, 1000);
-
-/* fake notifications */
 setInterval(function(){
-var names = ["Amanda","Lisa","Chloe","Samantha"];
+
+var names = ["Sophie","Chloe","Emma","Mia","Jessica","Amanda"];
+
 var name = names[Math.floor(Math.random()*names.length)];
+
 var popup = document.createElement("div");
+
 popup.className="popup";
-popup.innerHTML = name + " just came online";
+
+popup.innerHTML = "💬 " + name + " is online now (2km away)";
+
 document.body.appendChild(popup);
 
-setTimeout(()=>{popup.remove();},3000);
-},4000);
+setTimeout(function(){
+popup.remove();
+},3000);
+
+},5000);
 
 </script>
 
